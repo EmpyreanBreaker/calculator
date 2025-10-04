@@ -45,4 +45,29 @@ body {
     margin-top: 10px;
     background-color: rgb(21, 121, 78);
     border: 3px solid rgb(255, 255, 255);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.calculator__keypad {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: white;
+    width: 96%;
+    height: 80%;
+    gap: 20px;
+}
+
+.calculator__digits {
+    width: 61px;
+    height: 55px;
+}
+
+.calculator__operators {
+    width: 61px;
+    height: 55px;
 }
