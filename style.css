@@ -70,3 +70,7 @@ body {
     width: 61px;
     height: 55px;
 }
+
+.calculator__display{
+    font-size: 40px;
+}
