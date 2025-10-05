@@ -76,8 +76,8 @@ keypad.addEventListener("click", e => {
     // If the user presses an operator multiple times post calculation then the Populate operator if block kicks in
     if (operators.includes(userInput) && firstOperand !== "" && secondOperand !== "" && userInput !== "=" && operator !== "" && equalsOperator === false) {
         output = calculator(firstOperand, operator, secondOperand);
-        operator = userInput;
         firstOperand = output.toString();
+        operator = userInput;
         // Empty secondOperand so it can take the next value - secondOperand if block kicks in
         secondOperand = "";
         display();
@@ -110,9 +110,8 @@ keypad.addEventListener("click", e => {
     // Scenario One: User has a valid operator and operands and hits the equals sign
     // Scenario Three: A result is displayed and the user presses the equality operator again
     else if (firstOperand !== "" && operator !== "" && secondOperand !== "" && userInput === "=") {
-
-        firstOperand = output.toString();
         output = calculator(firstOperand, operator, secondOperand);
+        firstOperand = output.toString();
         equalsOperator = true;
         screenOutput.innerHTML = output;
     }
