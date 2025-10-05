@@ -24,7 +24,18 @@ keypad.addEventListener("click", e => {
         userInput = button.innerHTML;
     }
 
-    // If the user divides by 0 reset everything
+    // If the user hits "C" reset everything
+    if (userInput === "C") {
+        firstOperand = "";
+        operator = "";
+        secondOperand = "";
+        output = 0;
+        equalsOperator = false;
+        divByZero = false;
+        screenOutput.innerHTML = 0;
+    }
+
+    // If the user divides by 0 reset everything or clears
     if (divByZero === true) {
         firstOperand = "";
         operator = "";
@@ -45,7 +56,7 @@ keypad.addEventListener("click", e => {
     }
 
     // Scenario Four: User chooses an operator after we display a result
-    if (equalsOperator === true && operators.includes(userInput)) {
+    if (equalsOperator === true && operators.includes(userInput) && userInput !== "=") {
         firstOperand = output.toString();
         operator = userInput;
         secondOperand = "";
@@ -99,8 +110,9 @@ keypad.addEventListener("click", e => {
     // Scenario One: User has a valid operator and operands and hits the equals sign
     // Scenario Three: A result is displayed and the user presses the equality operator again
     else if (firstOperand !== "" && operator !== "" && secondOperand !== "" && userInput === "=") {
-        output = calculator(firstOperand, operator, secondOperand);
+
         firstOperand = output.toString();
+        output = calculator(firstOperand, operator, secondOperand);
         equalsOperator = true;
         screenOutput.innerHTML = output;
     }
@@ -134,8 +146,8 @@ function calculator(firstOperand, operator, secondOperand) {
             result = firstOperand / secondOperand;
             break;
         default:
+            divByZero = true;
             return "Invalid Operator"
     }
-
     return result = Math.round((result + Number.EPSILON) * 1e10) / 1e10;
 }
